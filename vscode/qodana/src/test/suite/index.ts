@@ -6,16 +6,16 @@ export function run(): Promise<void> {
 	// Create the mocha test
 	const mocha = new Mocha({
 		ui: "bdd",
-        timeout: 35000,
+        timeout: 5000,
         bail: false,
-        slow: 20000,
+        slow: 5000,
 		color: true
 	});
 	// mocha.timeout(0);
 
 	const testsRoot = path.resolve(__dirname, '..');
 
-	return new Promise((c, e) => {
+	return new Promise(async (c, e) => {
 		glob('**/**.test.js', { cwd: testsRoot }, (err, files) => {
 			if (err) {
 				return e(err);
@@ -34,7 +34,7 @@ export function run(): Promise<void> {
 					}
 				});
 			} catch (err) {
-				console.error(err);
+				console.error('Mocha test failed:', err);
 				e(err);
 			}
 		});
