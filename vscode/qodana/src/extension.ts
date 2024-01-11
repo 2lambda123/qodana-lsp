@@ -1,6 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import { ExtensionContext } from 'vscode';
 import { extensionInstance } from './core/extension';
 import { ShowMarkerHandler } from './core/handler';
 import telemetry from './core/telemetry';
@@ -14,7 +15,7 @@ export async function activate(context: vscode.ExtensionContext) {
 	telemetry.extensionStarted(context);
 	//Initialize the LS Client extension instance.
 	await extensionInstance.init().catch((error)=> {
-		console.log("Failed to activate Qodana SARIF extension. " + (error));
+		console.error("Failed to activate Qodana SARIF extension", error);
 		telemetry.errorReceived('#activate exception');
 	});
 

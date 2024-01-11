@@ -1,4 +1,4 @@
 {
-    "qodana.pathPrefix": "",
-    "qodana.projectId": ""
+    "qodana.pathPrefix":"./qodana/"
+    "qodana.projectId":"qodana-id123"
 }
